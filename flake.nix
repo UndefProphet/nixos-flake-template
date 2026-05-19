@@ -23,6 +23,16 @@
           modules = [ ./hosts/common ./hosts/desktop];
         };
 
+        laptop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            configName = "laptop";
+            hostName = "lapman";
+            inherit inputs stateVersion user location;
+          };
+          modules = [ ./hosts/common ./hosts/laptop];
+        };
+
       };
     };
 
